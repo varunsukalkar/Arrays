@@ -3,23 +3,23 @@ public:
    
        void sortColors(vector<int>& nums) {
       
+      const char red=0, white=1, blue=2;
         int l=0, m=0, r=nums.size()-1;// pointers to partition
         while(m<=r){
-               if(nums[m]==0){
+            switch(nums[m]){
+                case red:
                     swap(nums[l], nums[m]);
-                    l++;
-                     m++;
-               }
-                if(nums[m]==1){
+                    l++, m++;
+                    break;
+                case white:
                     m++;
-                
-                }
-                if(nums[m]==2){
+                    break;
+                case blue:
                     swap(nums[m], nums[r]);
                     r--;
-                }
             }
         }
+       }
     
     
 };
