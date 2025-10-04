@@ -1,0 +1,20 @@
+Example College is a mid-sized institution located in Sampletown. It offers undergraduate and postgraduate programs across Engineering, Business, Arts, and Health Sciences.
+
+Admissions:
+- Application deadlines: Fall (July 15), Spring (November 30)
+- Average accepted GPA: 3.5
+- Standardized tests: SAT/ACT optional
+
+Tuition & Aid:
+- Annual tuition: $18,000 (in-state), $28,000 (out-of-state)
+- Scholarships: Merit-based awards up to $8,000 per year
+
+Campus Life:
+- Housing: 8 residence halls; 65% of first-year students live on campus
+- Clubs: 120+ student organizations, including robotics, debate, and theater
+- Sports: NCAA Division II teams
+
+Contact:
+- Admissions email: admissions@example.edu
+- Phone: (555) 123-4567
+- Website: https://www.example.edu

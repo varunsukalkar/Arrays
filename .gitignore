@@ -1,0 +1,16 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Chroma DB persistence
+chroma_db/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
