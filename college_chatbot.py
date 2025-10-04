@@ -85,10 +85,8 @@ def build_llm(api_token: str) -> HuggingFaceEndpoint:
         repo_id="google/flan-t5-base",
         task="text2text-generation",
         huggingfacehub_api_token=api_token,
-        model_kwargs={
-            "temperature": 0.1,
-            "max_new_tokens": 256,
-        },
+        temperature=0.1,
+        max_new_tokens=256,
     )
 
 
