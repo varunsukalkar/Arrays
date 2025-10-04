@@ -1,0 +1,10 @@
+langchain>=0.1.0
+langchain-huggingface>=0.0.1
+langchain-chroma>=0.2.6
+chromadb>=0.4.22
+python-dotenv>=1.0.0
+sentence-transformers>=2.2.2
+huggingface-hub>=0.19.4
+transformers>=4.35.2
+torch>=2.5.0
+numpy>=1.24.3
