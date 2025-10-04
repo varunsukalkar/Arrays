@@ -1,0 +1,15 @@
+# Core LangChain dependencies
+langchain==0.1.0
+langchain-huggingface==0.0.1
+
+# Vector store and embeddings
+chromadb==0.4.22
+sentence-transformers==2.2.2
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Additional dependencies
+numpy==1.24.3
+pandas==2.0.3
+requests==2.31.0
