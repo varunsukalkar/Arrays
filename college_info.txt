@@ -1,0 +1,23 @@
+Welcome to Example College!
+
+Example College is a mid-sized institution located in Springfield. We offer undergraduate and postgraduate programs across the School of Engineering, School of Arts & Humanities, School of Business, and School of Natural Sciences.
+
+- Engineering: Computer Science, Electrical, Mechanical, Civil, and Data Science.
+- Arts & Humanities: English, History, Philosophy, and Psychology.
+- Business: Accounting, Finance, Marketing, and MBA.
+- Natural Sciences: Biology, Chemistry, Physics, and Environmental Science.
+
+Admissions:
+- Application deadlines: Fall (June 1), Spring (November 15)
+- Average SAT: 1250; Average GPA: 3.6
+- Scholarships available based on merit and need
+
+Campus:
+- Library open 8am–11pm on weekdays
+- Housing guaranteed for first-year students
+- Career services offer internships and placement support
+
+Contact:
+- Website: https://example.edu
+- Admissions: admissions@example.edu
+- Phone: (555) 123-4567
