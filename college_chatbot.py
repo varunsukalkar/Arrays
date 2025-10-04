@@ -90,6 +90,44 @@ def build_llm(api_token: str) -> HuggingFaceEndpoint:
     )
 
 
+def _invoke_with_fallback(qa: RetrievalQA, query: str):
+    """Try multiple input payload styles across LangChain versions."""
+    last_exc: Exception | None = None
+    for payload in (query, {"query": query}, {"input": query}):
+        try:
+            return qa.invoke(payload)
+        except Exception as exc:  # try next style
+            last_exc = exc
+            continue
+    # If all attempts failed, re-raise the last exception
+    assert last_exc is not None
+    raise last_exc
+
+
+def _extract_answer(result) -> str:
+    if isinstance(result, dict):
+        return (
+            result.get("result")
+            or result.get("answer")
+            or result.get("output_text")
+            or result.get("text")
+            or str(result)
+        )
+    return str(result)
+
+
+def _preflight_check(llm: HuggingFaceEndpoint) -> None:
+    """Attempt a tiny generation to validate HF token/model availability."""
+    try:
+        # Keep it small and deterministic
+        prompt = "Answer with 'ok'."
+        _ = llm.invoke(prompt)
+    except Exception as exc:
+        raise RuntimeError(
+            "LLM preflight failed. Verify HUGGINGFACEHUB_API_TOKEN and network access."
+        ) from exc
+
+
 def main() -> None:
     load_dotenv()
 
@@ -109,6 +147,12 @@ def main() -> None:
 
     # LLM and RetrievalQA chain
     llm = build_llm(hf_token)
+    # Validate token/connectivity early to give clearer errors
+    try:
+        _preflight_check(llm)
+    except Exception as exc:
+        print(f"⚠️ LLM preflight error: {type(exc).__name__}: {exc}")
+        return
     qa = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=vectorstore.as_retriever(search_kwargs={"k": 4}),
@@ -129,10 +173,10 @@ def main() -> None:
             print("(Please enter a question.)")
             continue
         try:
-            result = qa.invoke({"query": query})
-            print("🤖 Answer:", result.get("result") or result)
+            result = _invoke_with_fallback(qa, query)
+            print("🤖 Answer:", _extract_answer(result))
         except Exception as exc:
-            print(f"⚠️ Error while generating answer: {exc}")
+            print(f"⚠️ Error while generating answer: {type(exc).__name__}: {exc}")
 
 
 if __name__ == "__main__":
